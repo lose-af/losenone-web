@@ -1,0 +1,45 @@
+---
+import Layout from '@layouts/docs-content.astro';
+import { siteConfig } from '@config';
+import { locales } from '@utils/i18n';
+import { fetchDocs, getFallbackBySlugs, getLocalDocs } from '@utils/docs';
+import type { DocsPageProps as Props } from '~/types';
+
+const { contentProps, pageProps } = Astro.props;
+
+export async function getStaticPaths() {
+	const paths = [];
+	const allPages = await fetchDocs();
+
+	paths.push(
+		...allPages.map((p) => ({
+			params: { locale: p.locale, slug: p.slug },
+			props: { contentProps: p, pageProps: { fallback: false } },
+		})),
+	);
+
+	// Fallback pages
+	for (const locale of locales) {
+		if (locale === siteConfig.site.defaultLocale) continue;
+
+		/* eslint-disable no-await-in-loop */
+		const localDocs = await getLocalDocs(locale);
+		const fallbackPages = await getFallbackBySlugs(localDocs.map(({ slug }) => slug));
+		/* eslint-enable no-await-in-loop */
+
+		paths.push(
+			...fallbackPages.map((p) => ({
+				params: { locale, slug: p.slug },
+				// Ensure we have fallbacked locale here.
+				props: { contentProps: p, pageProps: { fallback: true } },
+			})),
+		);
+	}
+
+	return paths;
+}
+---
+
+<Layout contentProps={contentProps} pageProps={pageProps}>
+	<contentProps.Content />
+</Layout>
