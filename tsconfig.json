@@ -6,12 +6,10 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["src/*"],
-      "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@utils/*": ["src/utils/*"],
-      "@config": ["src/config"]
+      "@comp/*": ["src/components/content/*"]
     },
     "jsx": "preserve",
-    "jsxImportSource": "solid-js"
+    "jsxImportSource": "solid-js",
+    "types": ["unplugin-icons/types/solid"]
   }
 }

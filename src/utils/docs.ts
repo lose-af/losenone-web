@@ -1,8 +1,8 @@
-import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import type { Locales, Docs } from 'src/types';
-import { siteConfig } from '@config';
-import { isValidLocale } from '@utils/i18n';
+import type { Locales, Docs } from '~/types';
+import { getCollection } from 'astro:content';
+import { isValidLocale } from '~/utils/i18n';
+import { siteConfig } from '~/config';
 
 /**
  * Remove the tailing country code (i.e. /something/nested[/zh]) from a slug
@@ -23,7 +23,7 @@ function getLocaleFromSlug(slug: string): Locales {
 
 async function getNormalizedPage(page: CollectionEntry<'docs'>): Promise<Docs> {
 	const { id, slug, data } = page;
-	const { title, desc, outdated = false } = data;
+	const { title, desc, outdated = false, outdated_translation = false } = data;
 	const { Content, headings } = await page.render();
 	const locale = getLocaleFromSlug(slug);
 
@@ -36,6 +36,7 @@ async function getNormalizedPage(page: CollectionEntry<'docs'>): Promise<Docs> {
 		title,
 		desc,
 		outdated,
+		outdated_translation,
 	};
 }
 

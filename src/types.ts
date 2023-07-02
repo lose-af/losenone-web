@@ -1,5 +1,6 @@
-import type { MarkdownHeading, MarkdownInstance } from 'astro';
 import type { Locales } from './i18n/i18n-types';
+import type { MarkdownHeading, MarkdownInstance } from 'astro';
+import type { ComponentProps, JSX } from 'solid-js';
 
 export type { Locales, Translations } from './i18n/i18n-types';
 
@@ -40,15 +41,19 @@ export type Docs = {
 	title: string;
 	desc: string;
 	outdated: boolean;
+	outdated_translation: string | false;
 };
 
 export type DocsPageProps = {
 	contentProps: Docs;
 	pageProps: {
 		fallback: boolean;
+		outdated: boolean;
 	};
 };
 
 export type TocItem = MarkdownHeading & {
 	children: TocItem[];
 };
+
+export type Icon = (props: ComponentProps<'svg'>) => JSX.Element;
