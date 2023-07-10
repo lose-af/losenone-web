@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   lint-and-deploy:
-    name: Run linters
+    name: Lint and Deploy
     environment: production
     runs-on: ubuntu-latest
 
