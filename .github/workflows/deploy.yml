@@ -1,10 +1,9 @@
-name: Lint
+name: Lint and Deploy
 
 on:
-  pull_request:
+  push:
     branches:
       - main
-      - develop
 
 # Down scope as necessary via https://docs.github.com/en/actions/security-guides/automatic-token-authentication#modifying-the-permissions-for-the-github_token
 permissions:
@@ -12,8 +11,9 @@ permissions:
   contents: write
 
 jobs:
-  run-linters:
+  lint-and-deploy:
     name: Run linters
+    environment: production
     runs-on: ubuntu-latest
 
     steps:
@@ -48,8 +48,8 @@ jobs:
       - name: Install Node.js dependencies
         run: pnpm install
 
-      - name: Generate i18n types
-        run: pnpm exec typesafe-i18n --no-watch
+      - name: Build
+        run: pnpm run build
 
       - name: Run linters (Astro)
         run: pnpm exec astro check
@@ -64,3 +64,14 @@ jobs:
           eslint_args: '--ignore-path ./.gitignore'
           eslint_extensions: 'astro,ts,tsx,cjs,mjs,js,jsx'
           tsc: true
+          continue_on_error: false
+
+      - name: Deploy to Production
+        uses: easingthemes/ssh-deploy@v4.1.8
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          SOURCE: ${{ secrets.SOURCE }}
+          TARGET: ${{ secrets.TARGET }}
+          SCRIPT_AFTER: ${{ secrets.SCRIPT_AFTER }}
