@@ -9,14 +9,14 @@ const en: Translation = {
 	navItems: {
 		news: 'News',
 		docs: 'Docs',
-		resources: 'Resolution',
+		resources: 'Resources',
 		guiluo: 'GuiLuoYuan',
 	},
 	hero: {
 		title: 'Losenone',
-		desc: 'Amazing description here.',
-		primaryButton: 'Primary',
-		secondaryButton: 'Secondary',
+		desc: 'A Minecraft community.',
+		primaryButton: 'Join us',
+		secondaryButton: 'Read the docs',
 	},
 	notfound: {
 		title: 'missing',
@@ -36,6 +36,9 @@ const en: Translation = {
 			'(and consider updating the translation if you are able to help out!)',
 		],
 		tocHeading: 'On this page',
+	},
+	news: {
+		breadcrumbBase: 'News',
 	},
 };
 

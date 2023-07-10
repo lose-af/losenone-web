@@ -3,6 +3,21 @@ title: 首页
 desc: 在这里寻找你所想要了解的一切
 ---
 
-## 洛书南社区管理条例
+import IntroPane from '@comp/intro-pane.astro';
+import IntroHeader from '@comp/intro-header.astro';
+import IntroCard from '@comp/intro-card.astro';
 
--   [Link](../losenone-community-management-regulations/)
+<IntroPane>
+	<IntroHeader>
+	这里是洛书南 Minecraft 服务器的文档库。
+	</IntroHeader>
+
+    <IntroCard fullWidth={true}>
+    ## 入门
+
+    请仔细阅读这些文档，它们会解答你初入社区时的疑问。
+
+    -   [管理条例](../losenone-community-management-regulations/)
+    </IntroCard>
+
+</IntroPane>

@@ -14,9 +14,9 @@ const zh: BaseTranslation = {
 	},
 	hero: {
 		title: '洛书南',
-		desc: '一段美妙的介绍。',
-		primaryButton: '主要按钮',
-		secondaryButton: '次要按钮',
+		desc: '高素质的 Minecraft 玩家社区',
+		primaryButton: '加入我们',
+		secondaryButton: '阅读文档',
 	},
 	notfound: {
 		title: '页面不存在',
@@ -35,6 +35,9 @@ const zh: BaseTranslation = {
 			'（欢迎你来帮助更新翻译）！',
 		],
 		tocHeading: '在本页上',
+	},
+	news: {
+		breadcrumbBase: '新闻',
 	},
 };
 
