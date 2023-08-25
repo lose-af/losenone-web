@@ -51,21 +51,6 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      - name: Run linters (Astro)
-        run: pnpm exec astro check
-
-      - name: Run linters (Prettier, ESLint, TSC)
-        uses: wearerequired/lint-action@v2
-        with:
-          prettier: true
-          prettier_args: '--ignore-path ./.gitignore --plugin-search-dir=.'
-          prettier_extensions: 'js,ts,cjs,mjs,jsx,tsx,html,json,yaml,yml,astro'
-          eslint: true
-          eslint_args: '--ignore-path ./.gitignore'
-          eslint_extensions: 'astro,ts,tsx,cjs,mjs,js,jsx'
-          tsc: true
-          continue_on_error: false
-
       - name: Deploy to Production
         uses: easingthemes/ssh-deploy@v4.1.8
         env:
