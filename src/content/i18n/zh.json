@@ -1,0 +1,15 @@
+{
+	"custom": {
+		"hero": {
+			"title": "洛书南",
+			"desc": "Minecraft 服务器",
+			"primaryButton": "加入我们",
+			"secondaryButton": "阅读文档"
+		}
+	},
+	"site": {
+		"title": "洛书南",
+		"logotype": "洛书南",
+		"logoAlt": "洛书南"
+	}
+}

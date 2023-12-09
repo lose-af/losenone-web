@@ -1,0 +1,65 @@
+---
+import { getPathname } from '@miracle-box/flint/utils';
+---
+
+<footer class="footer">
+	<div class="__group">
+		<img
+			class="__icon"
+			alt="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=22017202000263"
+			src={getPathname('images/sec-record.png')}
+		/>
+		<a
+			class="__link"
+			href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=22017202000263"
+			rel="nofollow noopener"
+		>
+			吉公网安备 22017202000263 号
+		</a>
+	</div>
+	<a class="__link" href="https://beian.miit.gov.cn/" rel="nofollow noopener"> 吉 ICP 备 2021002465 号</a>
+</footer>
+
+<style>
+	.footer {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		margin-top: auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 0.25rem;
+		padding: 1rem 1rem;
+		font-size: var(--font-sm-size);
+		line-height: var(--font-sm-line-height);
+		color: var(--color-gray-500);
+
+		@media (--size-sm) {
+			flex-direction: row;
+			gap: 1rem;
+		}
+
+		.__group {
+			display: flex;
+			gap: 0.25rem;
+		}
+
+		.__icon {
+			margin: auto 0;
+			height: 1rem;
+			width: 1rem;
+			flex-grow: 0;
+		}
+
+		.__link {
+			color: var(--color-gray-500);
+			text-decoration: none;
+
+			&:hover {
+				color: var(--color-gray-900);
+			}
+		}
+	}
+</style>

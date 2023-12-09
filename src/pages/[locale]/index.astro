@@ -1,0 +1,12 @@
+---
+import { BlankPage as Layout } from '@miracle-box/flint/components';
+import Hero from '../../components/hero.astro';
+import Footer from '../../components/footer.astro';
+
+export { staticPathForEachLocale as getStaticPaths } from '@miracle-box/flint/utils';
+---
+
+<Layout>
+	<Hero />
+	<Footer />
+</Layout>

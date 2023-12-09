@@ -1,0 +1,114 @@
+---
+title: 快速开始
+desc: 使用 Flint 快速创建你的文档站点
+---
+
+## 前言
+
+您在开启 Minecraft 之旅时可能会遇到无法验证 Minecraft 正版账户的情况，您可参照此方案解决这个问题。
+
+## 解决方法
+
+### 修改系统 Hosts 文件
+
+您可以通过修改系统 Hosts 文件，来实现正常访问（仅限 DNS 污染情况）到受影响的 Minecraft 服务，这里我们以 Windows 11 为例：
+
+1. 打开文件资源管理器，在地址栏中键入 `C:\windows\system32\drivers\etc` ，打开如下图所示文件夹。
+
+      ![位置示例](https://www.our.moe/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhosts.26fcaa58.png&w=1920&q=75)
+
+2. 右键 `hosto` 文件，在右键菜单中选择 `打开方式` ，在选择菜单中选择 `记事本`（或您喜爱的文本编辑软件），点击 `仅一次` 以编辑 hosts 文件。
+
+3. 在 hosts 文件的最后一行，`回车` 一次另起一行，键入以下内容：
+
+```
+13.107.213.50 sessionserver.mojang.com
+13.226.120.76 authserver.mojang.com
+13.107.213.50 minecraftservices.com
+```
+
+4. 单击左上角的 `文件` ，选择 `保存` ，关闭记事本，启动 Minecraft 开始游戏即可。
+
+### 使用游戏加速器
+
+您可以通过游戏加速器，来实现正常访问到受影响的 Minecraft 服务，这里我们以迅游加速器为例：
+
+1. 启动迅游加速器，在右上角的搜索框键入 `Minecraft` ，轻按回车以搜索。
+
+      ![注册示例](https://www.our.moe/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fsosou_1.667fa3d3.png&w=2048&q=75)
+
+2. 右键点击将 `Minecraft 国际版` 添加到 `我的游戏` 。
+
+请不要选择诸如 `Minecraft 国服` 、 `我的世界国服` 以及 `中国节点` 等加速方式。
+
+![添加示例](https://www.our.moe/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fsosou_2.9c99ffa6.png&w=1920&q=75)
+
+3. 选择 `全区服` 节点，点击 `立即加速` ，等待迅游加速器加速完成后，启动 Minecraft 启动器开始游戏即可。
+
+请不要选择 `中国` 节点，可以选择距离您自身所在地域近的国际节点或港澳台节点。
+
+![添加示例](https://www.our.moe/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fjiasu.31d3a864.png&w=1920&q=75)
+
+### 使用代理服务
+
+1. 在您使用的代理服务中，应有本地服务端口之类的信息，请记下 `IP` 与 `端口` ，将它们填入以下格式中，并保存下来：
+
+```
+-DsocksProxyHost=<IP> -DsocksProxyPort=<端口>
+```
+
+示例：
+
+```
+-DsocksProxyHost=<127.0.0.1> -DsocksProxyPort=<7890>
+```
+
+2. 在您使用的代理服务中，在 `系统代理绕过的域名 / IP 网段` 设置中，将 Minecraft 服务器的连接域名（例如：mc.our.moe）设置为绕过。
+
+      **请一定一定完成此项操作，如果未设置绕过，您与 Minecraft 服务器之间的通信也将被代理，您的游戏延迟将非常高！**\
+       如果您没有在您的代理服务中找到类似的设置，请打开 Windows 设置，在 `网络和 Internet` -> `代理` -> `手动设置代理` 板块中，找到 `使用代理服务器` 一栏，点击右侧 `编辑` ，在下图所示输入框内输入参数（例如：`;mc.our.moe`），也可完成此操作。
+
+      ![添加示例](https://www.our.moe/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fxitongdaili.e2e93f2f.png&w=3840&q=75)
+
+#### HMCL 启动器
+
+1. 运行 HMCL 启动器，点击 `版本列表` ，选择你所需的版本单击。
+2. 勾选 `启用游戏特定设置（不影响其他游戏版本）` 或点击 `编辑全局版本设置` 。
+3. 滑动到最底下，在高级设置一栏中找到并点击 `修改高级设置` 。
+
+      ![HMCL 点击示例](https://www.our.moe/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhmcl_gaojishezhi.07e77efc.png&w=1920&q=75)
+
+4. 在 `Java 虚拟机设置` 板块中，找到 `Java 虚拟机参数` 输入框，填入先前保存的代码。
+
+      ![HMCL 配置示例](https://www.our.moe/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhmcl_peizhi.9d42ceb1.png&w=1920&q=75)
+
+5. 返回 HMCL 启动器主页，在确保代理服务正在运行且正常可用时，启动 Minecraft 开始游戏即可。
+
+#### PCL2 启动器
+
+1. 运行 PCL2 启动器，点击 `版本列表` ，选择你所需的版本单击。
+2. 点击 `版本设置` ，在左侧边栏中选择 `设置` ，滑动到最底下，展开 `高级启动选项` 板块，找到 `JVM 参数` 输入框，填入先前保存的代码。
+
+      ![PCL2 配置示例](https://www.our.moe/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fpcl2_peizhi.03c952c5.png&w=1920&q=75)
+
+3. 返回 PCL2 启动器主页，在确保代理服务正在运行且正常可用时，启动 Minecraft 开始游戏即可。
+
+### 使用 steamcommunity 302
+
+第三方软件 [steamcommunity 302](https://www.dogfight360.com/blog/686/) 在 V12.1.29 版中本新增了修复我的世界部分服务的模式，您可尝试使用。
+
+## 相关新闻
+
+#### 2023 年 10 月 01 日
+
+> 自 2023 年 10 月 01 日 00:00 起全国多地玩家无法连接到 Minecraft 账户验证服务器，并且无法正常验证账户、获取皮肤披风等资源以及登录开启正版验证的服务器。
+>
+> 目前我们已知受到影响的，与 Minecraft 有关联的域名：
+>
+> - api.minecraftservices.com
+> - sessionserver.mojang.com
+> - api.mojang.com
+> - ...
+>
+> 全国多个地区访问上述域名受到不同程度的 DNS 污染或劫持，包含多个网络运营商（中国移动、中国联通），您可能还会遇到转跳到反诈中心网页的情况。\
+> 目前明面上的原因是被国家反诈中心判定为诈骗网站，对于此事，我们建议您持续观望，切勿加入网络舆论。

@@ -1,0 +1,15 @@
+{
+	"custom": {
+		"hero": {
+			"title": "Losenone",
+			"desc": "Minecraft server",
+			"primaryButton": "Join us",
+			"secondaryButton": "Read the docs"
+		}
+	},
+	"site": {
+		"title": "Losenone",
+		"logotype": "Losenone",
+		"logoAlt": "Losenone"
+	}
+}

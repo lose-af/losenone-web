@@ -1,17 +1,26 @@
-import { docsSchema, newsSchema } from '@miracle-box/flint/schema';
-import { defineCollection } from 'astro:content';
-
-const news = defineCollection({
-	type: 'content',
-	schema: newsSchema,
-});
+import { docsSchema, i18nSchema } from '@miracle-box/flint/schemas';
+import { defineCollection, z } from 'astro:content';
 
 const docs = defineCollection({
 	type: 'content',
-	schema: docsSchema,
+	schema: docsSchema(),
+});
+
+const i18n = defineCollection({
+	type: 'data',
+	schema: i18nSchema(
+		z.object({
+			hero: z.object({
+				title: z.string(),
+				desc: z.string(),
+				primaryButton: z.string(),
+				secondaryButton: z.string(),
+			}),
+		}),
+	),
 });
 
 export const collections = {
-	news,
 	docs,
+	i18n,
 };
