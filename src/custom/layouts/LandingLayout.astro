@@ -1,0 +1,35 @@
+---
+import { getLocaleByCode, useTranslation } from '~/lib/i18n/utils';
+import Layout from '~/layouts/PageLayout.astro';
+
+type Props = {
+	title: string;
+	description: string;
+};
+
+const locale = getLocaleByCode(Astro.currentLocale);
+const t = await useTranslation(locale);
+
+const { title, description } = Astro.props;
+---
+
+<Layout
+	title={title}
+	description={description}
+	navConfigKey="common"
+	lightTheme="light"
+	darkTheme="dark"
+>
+	<footer
+		slot="page-footer"
+		class="footer footer-center border-t border-base-content/10 p-4 text-base-content"
+	>
+		<aside>
+			<a href="https://github.com/miracle-box/flint">
+				{t('custom.footer.text')}
+			</a>
+		</aside>
+	</footer>
+
+	<slot />
+</Layout>

@@ -1,0 +1,15 @@
+---
+import { ThemeSwitcher } from './ThemeSwitcher';
+import { getLocaleByCode, useTranslation } from '~/lib/i18n/utils';
+
+const locale = getLocaleByCode(Astro.currentLocale);
+const t = await useTranslation(locale);
+---
+
+<ThemeSwitcher
+	labelText={t('navbar.theme')}
+	lightText={t('theme.light')}
+	darkText={t('theme.dark')}
+	systemText={t('theme.system')}
+	client:load
+/>

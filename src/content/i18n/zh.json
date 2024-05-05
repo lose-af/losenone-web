@@ -1,0 +1,16 @@
+{
+    "lang.label": "中文",
+    "site.name": "洛书南",
+    "site.description": "Minecraft 玩家社区",
+    "navbar.theme": "主题",
+    "navbar.language": "语言",
+    "navbar.menu": "菜单",
+    "navbar.menu.close": "关闭菜单",
+    "theme.light": "亮色",
+    "theme.dark": "暗色",
+    "theme.system": "跟随系统",
+    "custom.navbar.docs": "文档",
+    "custom.navbar.gallery": "画廊",
+    "custom.navbar.ourmoe": "归落原",
+    "custom.footer.text": "本文档由 Flint 生成"
+}

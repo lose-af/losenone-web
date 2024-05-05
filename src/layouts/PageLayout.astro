@@ -1,0 +1,29 @@
+---
+import Navbar from '~/components/common/Navbar.astro';
+import Layout from './EmptyLayout.astro';
+import type { BlankLayoutProps } from '~/lib/types';
+
+type Props = BlankLayoutProps;
+
+const { navConfigKey } = Astro.props;
+---
+
+<Layout {...Astro.props}>
+	<Fragment slot="layout-top">
+		<slot name="layout-top" />
+		<header class="sticky top-0">
+			<slot name="page-before-navbar" />
+			<Navbar configKey={navConfigKey} />
+		</header>
+	</Fragment>
+
+	<main class="flex-shrink-0 flex-grow">
+		<slot />
+	</main>
+
+	<Fragment slot="layout-bottom">
+		<slot name="page-before-footer" />
+		<slot name="page-footer" />
+		<slot name="layout-bottom" />
+	</Fragment>
+</Layout>

@@ -1,0 +1,70 @@
+---
+import { Image } from 'astro:assets';
+import { normalizeLink } from '~/lib/routing';
+import { getLocaleByCode, useTranslation } from '~/lib/i18n/utils';
+import Links from './Navbar/Links.astro';
+import MobileLinks from './Navbar/MobileLinks.astro';
+import LocaleSwitcher from './Navbar/LocaleSwitcher.astro';
+import ThemeSwitcherWrapper from './Navbar/ThemeSwitcherWrapper.astro';
+import { Config } from '~/config';
+import { logger } from '~/lib/logger';
+
+type Props = {
+	configKey?: string | undefined;
+};
+
+const locale = getLocaleByCode(Astro.currentLocale);
+const t = await useTranslation(locale);
+
+const { configKey } = Astro.props;
+const navConfig = Object.entries(Config.navbar).find(
+	([key]) => key === configKey,
+)?.[1];
+
+if (configKey && !navConfig)
+	logger.warn(`Navbar config "${configKey}" is not found.`);
+
+// Fallback to a reasonable value when no navConfig provided
+const title = t(navConfig?.titleI18nKey ?? 'site.name');
+const icon = navConfig?.icon ?? Config.site.icon.href;
+
+const titleLink = normalizeLink(locale, navConfig?.titleLink ?? '/');
+---
+
+<nav class="navbar border-b border-base-content/10 bg-base-100">
+	<div class="flex-1">
+		<a href={titleLink} class="btn btn-ghost text-xl">
+			<!-- Site icon -->
+			{
+				(!navConfig || navConfig.showIcon) && (
+					<Image
+						src={icon}
+						alt={title}
+						width="32"
+						height="32"
+						loading="eager"
+					/>
+				)
+			}
+
+			<!-- Site title -->
+			{(!navConfig || navConfig.showTitle) && <span>{title}</span>}
+		</a>
+	</div>
+
+	<div class="flex-none">
+		<!-- Links -->
+		<div class="hidden md:flex">
+			<Links links={navConfig?.links ?? []} />
+		</div>
+
+		<!-- Theme switcher -->
+		<ThemeSwitcherWrapper />
+
+		<!-- Locale switcher -->
+		<LocaleSwitcher />
+
+		<!-- Mobile nav -->
+		<MobileLinks links={navConfig?.links ?? []} />
+	</div>
+</nav>
