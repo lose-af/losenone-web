@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { getLocaleByCode, useTranslation } from '~/lib/i18n/utils';
 import Layout from '~/layouts/PageLayout.astro';
 
@@ -22,12 +23,41 @@ const { title, description } = Astro.props;
 >
 	<footer
 		slot="page-footer"
-		class="footer footer-center border-t border-base-content/10 p-4 text-base-content"
+		class="footer footer-center border-t border-base-content/10 p-2 text-base-content"
 	>
 		<aside>
-			<a href="https://github.com/miracle-box/flint">
-				{t('custom.footer.text')}
-			</a>
+			<div>
+				<a
+					href="https://github.com/miracle-box/flint"
+					class="link-hover link"
+				>
+					{t('custom.footer.text')}
+				</a>
+			</div>
+
+			<div class="flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs">
+				<a
+					class="link-hover link flex items-center gap-1"
+					href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=22017202000263"
+					rel="nofollow noopener"
+				>
+					<Image
+						alt=""
+						width={12}
+						height={12}
+						class="inline h-3 w-3"
+						src="data:image/png;base64,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"
+					/>
+					<span>吉公网安备 22017202000263 号</span>
+				</a>
+				<a
+					class="link-hover link"
+					href="https://beian.miit.gov.cn/"
+					rel="nofollow noopener"
+				>
+					吉 ICP 备 2021002465 号
+				</a>
+			</div>
 		</aside>
 	</footer>
 
