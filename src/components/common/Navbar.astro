@@ -27,12 +27,12 @@ if (configKey && !navConfig)
 // Fallback to a reasonable value when no navConfig provided
 const title = t(navConfig?.titleI18nKey ?? 'site.name');
 const icon = navConfig?.icon ?? Config.site.icon.href;
-
 const titleLink = normalizeLink(locale, navConfig?.titleLink ?? '/');
 ---
 
-<nav class="navbar border-b border-base-content/10 bg-base-100">
+<nav class="navbar">
 	<div class="flex-1">
+		<slot name="navbar-before-title" />
 		<a href={titleLink} class="btn btn-ghost text-xl">
 			<!-- Site icon -->
 			{
@@ -50,13 +50,19 @@ const titleLink = normalizeLink(locale, navConfig?.titleLink ?? '/');
 			<!-- Site title -->
 			{(!navConfig || navConfig.showTitle) && <span>{title}</span>}
 		</a>
+
+		<slot name="navbar-after-title" />
 	</div>
 
 	<div class="flex-none">
+		<slot name="navbar-before-links" />
+
 		<!-- Links -->
 		<div class="hidden md:flex">
 			<Links links={navConfig?.links ?? []} />
 		</div>
+
+		<slot name="navbar-after-links" />
 
 		<!-- Theme switcher -->
 		<ThemeSwitcherWrapper />
