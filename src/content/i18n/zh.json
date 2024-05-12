@@ -12,5 +12,7 @@
     "custom.navbar.docs": "文档",
     "custom.navbar.gallery": "画廊",
     "custom.navbar.ourmoe": "归落原",
-    "custom.footer.text": "本文档由 Flint 生成"
+    "custom.footer.text": "本文档由 Flint 生成",
+    "custom.page.home.title": "首页",
+    "custom.page.gallery.title": "画廊"
 }

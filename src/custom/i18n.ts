@@ -6,4 +6,6 @@ export const customI18nSchema: CustomI18nSchema = {
 	'custom.navbar.gallery': z.string(),
 	'custom.navbar.ourmoe': z.string(),
 	'custom.footer.text': z.string(),
+	'custom.page.home.title': z.string(),
+	'custom.page.gallery.title': z.string(),
 };
