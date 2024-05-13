@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import AlbumCard from './AlbumCard.astro';
+import { getLocaleByCode, useTranslation } from '~/lib/i18n/utils';
+import { getLocalizedRoutes } from '~/lib/routing';
+
+const locale = getLocaleByCode(Astro.currentLocale);
+const t = await useTranslation(locale);
+
+const albums = (await getCollection('albums')).toSorted(
+	(a, b) => a.data.order - b.data.order,
+);
+
+export const getStaticPaths = getLocalizedRoutes();
+---
+
+{
+	albums.map((album) => (
+		<AlbumCard
+			title={t(album.data.nameI18nKey)}
+			description={t(album.data.descI18nKey)}
+			imageUrl={album.data.images[0].src}
+			href={getRelativeLocaleUrl(locale, `/gallery/${album.id}`)}
+		/>
+	))
+}

@@ -7,6 +7,7 @@ export const imageSchema = z.object({
 });
 
 export const albumSchema = z.object({
+	order: z.number(),
 	nameI18nKey: z.string(),
 	descI18nKey: z.string(),
 	images: z.array(imageSchema).nonempty(),

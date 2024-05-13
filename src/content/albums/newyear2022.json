@@ -1,4 +1,5 @@
 {
+    "order": 100,
     "nameI18nKey": "custom.album.newyear2022.name",
     "descI18nKey": "custom.album.newyear2022.desc",
     "images": [

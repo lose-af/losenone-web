@@ -1,0 +1,20 @@
+---
+import Layout from '@custom/layouts/LandingLayout.astro';
+import OrderedAlbumCardsList from '~/custom/components/gallery/OrderedAlbumCardsList.astro';
+import { getLocaleByCode, useTranslation } from '~/lib/i18n/utils';
+import { getLocalizedRoutes } from '~/lib/routing';
+
+const locale = getLocaleByCode(Astro.currentLocale);
+const t = await useTranslation(locale);
+
+export const getStaticPaths = getLocalizedRoutes();
+---
+
+<Layout
+	title={t('custom.page.gallery.title')}
+	description={t('site.description')}
+>
+	<div class="container mx-auto flex flex-col gap-y-4 p-4">
+		<OrderedAlbumCardsList />
+	</div>
+</Layout>
