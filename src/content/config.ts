@@ -1,19 +1,19 @@
 import { defineCollection } from 'astro:content';
 import { customI18nSchema } from '@custom/i18n';
 import { getI18nSchema } from '../lib/i18n/schema';
-import { gallerySchema } from '~/custom/schemas/gallery';
+import { albumSchema } from '~/custom/schemas/album';
 
 const i18nCollection = defineCollection({
 	type: 'data',
 	schema: getI18nSchema(customI18nSchema),
 });
 
-const galleryCollection = defineCollection({
+const albumsCollection = defineCollection({
 	type: 'data',
-	schema: gallerySchema,
+	schema: albumSchema,
 });
 
 export const collections = {
 	i18n: i18nCollection,
-	gallery: galleryCollection,
+	albums: albumsCollection,
 };

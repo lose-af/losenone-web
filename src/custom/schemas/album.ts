@@ -9,9 +9,5 @@ export const imageSchema = z.object({
 export const albumSchema = z.object({
 	nameI18nKey: z.string(),
 	descI18nKey: z.string(),
-	images: z.array(imageSchema),
-});
-
-export const gallerySchema = z.object({
-	albums: z.array(albumSchema),
+	images: z.array(imageSchema).nonempty(),
 });
