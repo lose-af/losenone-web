@@ -1,0 +1,16 @@
+{
+    "nameI18nKey": "custom.album.newyear2022.name",
+    "descI18nKey": "custom.album.newyear2022.desc",
+    "images": [
+        {
+            "src": "https://cdnjson.com/images/2024/05/11/2022-01-01_00.12.30921641e08c1d73d3.png",
+            "altI18nKey": "custom.album.newyear2022.image.1.alt",
+            "captionI18nKey": "custom.album.newyear2022.image.1.caption"
+        },
+        {
+            "src": "https://cdnjson.com/images/2024/05/11/QQ202405041829335554e9cb1b9ba6da.jpg",
+            "altI18nKey": "custom.album.newyear2022.image.2.alt",
+            "captionI18nKey": "custom.album.newyear2022.image.2.caption"
+        }
+    ]
+}

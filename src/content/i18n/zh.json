@@ -14,5 +14,11 @@
     "custom.navbar.ourmoe": "归落原",
     "custom.footer.text": "本文档由 Flint 生成",
     "custom.page.home.title": "首页",
-    "custom.page.gallery.title": "画廊"
+    "custom.page.gallery.title": "画廊",
+    "custom.album.newyear2022.name": "2022 新年活动",
+    "custom.album.newyear2022.desc": "2022 年春举办的特殊活动。",
+    "custom.album.newyear2022.image.1.alt": "图像 1",
+    "custom.album.newyear2022.image.1.caption": "图像 1",
+    "custom.album.newyear2022.image.2.alt": "图像 2",
+    "custom.album.newyear2022.image.2.caption": "图像 2"
 }
