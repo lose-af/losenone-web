@@ -8,6 +8,7 @@ export const customI18nSchema: CustomI18nSchema = {
 	'custom.footer.text': z.string(),
 	'custom.page.home.title': z.string(),
 	'custom.page.gallery.title': z.string(),
+	'custom.page.gallery.back': z.string(),
 	'custom.album.newyear2022.name': z.string(),
 	'custom.album.newyear2022.desc': z.string(),
 	'custom.album.newyear2022.image.1.alt': z.string(),
