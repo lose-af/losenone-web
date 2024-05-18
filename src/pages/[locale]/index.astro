@@ -9,7 +9,10 @@ const t = await useTranslation(locale);
 export const getStaticPaths = () => getLocalizedPathItems();
 ---
 
-<Layout title={t('custom.page.home.title')} description={t('site.description')}>
+<Layout
+	title={[t('custom.page.home.title')]}
+	description={t('site.description')}
+>
 	<section class="m-4 min-h-[40rem] rounded-lg bg-base-200">
 		<div class="container mx-auto p-4"></div>
 	</section>

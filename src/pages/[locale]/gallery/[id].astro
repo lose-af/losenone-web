@@ -3,7 +3,6 @@ import { getEntry, getCollection } from 'astro:content';
 import { getLocalizedPathItems, addParamForPathItem } from '~/lib/routing';
 import LandingLayout from '~/custom/layouts/LandingLayout.astro';
 import { getLocaleByCode, useTranslation } from '~/lib/i18n/utils';
-import { Config } from '~/config';
 
 const locale = getLocaleByCode(Astro.currentLocale);
 const t = await useTranslation(locale);
@@ -23,9 +22,7 @@ export const getStaticPaths = async () => {
 ---
 
 <LandingLayout
-	title={t(content.data.nameI18nKey) +
-		Config.site.titleSeparator +
-		t('custom.page.gallery.title')}
+	title={[t(content.data.nameI18nKey), t('custom.page.gallery.title')]}
 	description={t(content.data.descI18nKey)}
 >
 	<div class="container mx-auto p-4">
