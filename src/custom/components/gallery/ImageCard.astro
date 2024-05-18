@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 type Props = {
 	src: string;
 	alt: string;
@@ -9,10 +11,14 @@ const { src, alt, caption } = Astro.props;
 ---
 
 <article class="group relative overflow-hidden rounded-lg bg-base-300 shadow">
-	<img
-		class="aspect-video rounded-lg transition-transform duration-700 ease-out group-hover:scale-105"
+	<!-- Assume image size is 1920x1080 -->
+	<!-- [TODO) Use <Picture> and srcset after we move to our own image hosting service. -->
+	<Image
+		class="aspect-video rounded-lg"
 		src={src}
 		alt={alt}
+		width={1920}
+		height={1080}
 	/>
 	<div
 		class="absolute bottom-0 z-10 w-full rounded-b-lg bg-base-200/60 p-3 backdrop-blur"

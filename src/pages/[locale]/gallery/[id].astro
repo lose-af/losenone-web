@@ -2,8 +2,9 @@
 import { getEntry, getCollection } from 'astro:content';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { getLocalizedPathItems, addParamForPathItem } from '~/lib/routing';
-import LandingLayout from '~/custom/layouts/LandingLayout.astro';
 import { getLocaleByCode, useTranslation } from '~/lib/i18n/utils';
+import LandingLayout from '~/custom/layouts/LandingLayout.astro';
+import { Tilt } from '~/custom/components/common/Tilt';
 import ImageCard from '~/custom/components/gallery/ImageCard.astro';
 
 const locale = getLocaleByCode(Astro.currentLocale);
@@ -44,11 +45,13 @@ export const getStaticPaths = async () => {
 		<div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
 			{
 				content.data.images.map((image) => (
-					<ImageCard
-						src={image.src}
-						alt={t(image.altI18nKey)}
-						caption={t(image.captionI18nKey)}
-					/>
+					<Tilt client:load>
+						<ImageCard
+							src={image.src}
+							alt={t(image.altI18nKey)}
+							caption={t(image.captionI18nKey)}
+						/>
+					</Tilt>
 				))
 			}
 		</div>
