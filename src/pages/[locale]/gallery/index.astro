@@ -2,12 +2,12 @@
 import Layout from '@custom/layouts/LandingLayout.astro';
 import OrderedAlbumCardsList from '~/custom/components/gallery/OrderedAlbumCardsList.astro';
 import { getLocaleByCode, useTranslation } from '~/lib/i18n/utils';
-import { getLocalizedRoutes } from '~/lib/routing';
+import { getLocalizedPathItems } from '~/lib/routing';
 
 const locale = getLocaleByCode(Astro.currentLocale);
 const t = await useTranslation(locale);
 
-export const getStaticPaths = getLocalizedRoutes();
+export const getStaticPaths = () => getLocalizedPathItems();
 ---
 
 <Layout

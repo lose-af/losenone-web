@@ -3,7 +3,6 @@ import { getCollection } from 'astro:content';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import AlbumCard from './AlbumCard.astro';
 import { getLocaleByCode, useTranslation } from '~/lib/i18n/utils';
-import { getLocalizedRoutes } from '~/lib/routing';
 
 const locale = getLocaleByCode(Astro.currentLocale);
 const t = await useTranslation(locale);
@@ -11,8 +10,6 @@ const t = await useTranslation(locale);
 const albums = (await getCollection('albums')).toSorted(
 	(a, b) => a.data.order - b.data.order,
 );
-
-export const getStaticPaths = getLocalizedRoutes();
 ---
 
 {
