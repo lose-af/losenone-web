@@ -58,7 +58,7 @@ export const Tilt = (props: Props): JSX.Element => {
 					'--rotateX': `${rotateX()}deg`,
 					'--rotateY': `${rotateY()}deg`,
 					'--scale': isHovering()
-						? props.scaleStrength ?? '1.02'
+						? props.scaleStrength ?? '1.05'
 						: '1.0',
 					transform:
 						'rotateX(var(--rotateX)) rotateY(var(--rotateY)) scale(var(--scale))',
