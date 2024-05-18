@@ -1,0 +1,34 @@
+---
+import { getEntry, getCollection } from 'astro:content';
+import { getLocalizedPathItems, addParamForPathItem } from '~/lib/routing';
+import LandingLayout from '~/custom/layouts/LandingLayout.astro';
+import { getLocaleByCode, useTranslation } from '~/lib/i18n/utils';
+import { Config } from '~/config';
+
+const locale = getLocaleByCode(Astro.currentLocale);
+const t = await useTranslation(locale);
+
+const { id } = Astro.params;
+const content = await getEntry('albums', id);
+
+export const getStaticPaths = async () => {
+	const albums = await getCollection('albums');
+
+	return getLocalizedPathItems().flatMap((item) => {
+		return albums.map((album) =>
+			addParamForPathItem(item, () => ({ id: album.id })),
+		);
+	});
+};
+---
+
+<LandingLayout
+	title={t(content.data.nameI18nKey) +
+		Config.site.titleSeparator +
+		t('custom.page.gallery.title')}
+	description={t(content.data.descI18nKey)}
+>
+	<div class="container mx-auto p-4">
+		<pre class="overflow-auto">{JSON.stringify(content, null, 4)}</pre>
+	</div>
+</LandingLayout>
