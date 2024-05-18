@@ -10,9 +10,9 @@ type Props = {
 export const Tilt = (props: Props): JSX.Element => {
 	let tiltRef = null as HTMLElement | null;
 
+	const [isHovering, setIsHovering] = createSignal(false);
 	const [rotateX, setRotateX] = createSignal(0);
 	const [rotateY, setRotateY] = createSignal(0);
-	const [scale, setScale] = createSignal(1);
 
 	const handleMouseMove = (event: MouseEvent) => {
 		if (!tiltRef) return;
@@ -24,13 +24,13 @@ export const Tilt = (props: Props): JSX.Element => {
 		const deltaY = event.clientY - centerY;
 
 		// number for division is for controlling strength of transforms
-		setScale(props.scaleStrength ?? 1.02);
+		setIsHovering(true);
 		setRotateX(-deltaY * (props.rotateStrength ?? 0.04));
 		setRotateY(deltaX * (props.rotateStrength ?? 0.04));
 	};
 
 	const handleMouseLeave = () => {
-		setScale(1);
+		setIsHovering(false);
 		setRotateX(0);
 		setRotateY(0);
 	};
@@ -43,7 +43,12 @@ export const Tilt = (props: Props): JSX.Element => {
 	});
 
 	return (
-		<div style={{ perspective: '1000px' }}>
+		<div
+			style={{
+				perspective: '1000px',
+				'z-index': isHovering() ? '10' : '0',
+			}}
+		>
 			<div
 				class="transition-transform duration-700 ease-out"
 				ref={(el) => {
@@ -52,7 +57,9 @@ export const Tilt = (props: Props): JSX.Element => {
 				style={{
 					'--rotateX': `${rotateX()}deg`,
 					'--rotateY': `${rotateY()}deg`,
-					'--scale': scale(),
+					'--scale': isHovering()
+						? props.scaleStrength ?? '1.02'
+						: '1.0',
 					transform:
 						'rotateX(var(--rotateX)) rotateY(var(--rotateY)) scale(var(--scale))',
 				}}
