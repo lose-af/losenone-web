@@ -4,6 +4,7 @@ import type { JSX } from 'solid-js/jsx-runtime';
 type Props = {
 	rotateStrength?: number;
 	scaleStrength?: number;
+	updateDelay?: number;
 	children: any;
 };
 
@@ -14,8 +15,15 @@ export const Tilt = (props: Props): JSX.Element => {
 	const [rotateX, setRotateX] = createSignal(0);
 	const [rotateY, setRotateY] = createSignal(0);
 
+	const [lastUpdated, setLastUpdated] = createSignal(0);
+
 	const handleMouseMove = (event: MouseEvent) => {
 		if (!tiltRef) return;
+
+		// Throttle
+		const now = new Date().getTime();
+		if (now - lastUpdated() < (props.updateDelay ?? 100)) return;
+		setLastUpdated(now);
 
 		const rect = tiltRef.getBoundingClientRect();
 		const centerX = rect.left + rect.width / 2;
